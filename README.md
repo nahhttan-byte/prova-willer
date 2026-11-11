@@ -80,7 +80,7 @@ INSERT INTO transacoes_cripto(quantidade, valor_pago) VALUES
 
     select 
 	co.nome_exchange,
-	sum(t.valor_pago) as total_movimentado,
+	sum(t.valor_pago) as total_movimentado
 	from transacoes_cripto t
 	join criptomoedas cr on t.criptomoeda_id - cr.id
 	join corretoras co on cr.corretora_id = co.id
@@ -93,7 +93,8 @@ INSERT INTO transacoes_cripto(quantidade, valor_pago) VALUES
 	t.valor_pago,
 	t.data_transacao
 	from transacoes_cripto t 
-	join carteiras c on t.carteira_id = c.id 
+	join carteiras c on t.carteira_id = c id 
 	join criptomoedas cr on t.criptomoeda_id = cr.id
-	where t.valor_pago > 500.00
+	where t.valor_pago . 500.00
 	order by t.valor_pago desc;
+	
