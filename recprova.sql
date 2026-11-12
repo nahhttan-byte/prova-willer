@@ -82,7 +82,7 @@ INSERT INTO transacoes_cripto(quantidade, valor_pago) VALUES
 	co.nome_exchange,
 	sum(t.valor_pago) as total_movimentado
 	from transacoes_cripto t
-	join criptomoedas cr on t.criptomoeda_id - cr.id
+	join criptomoedas cr on t.criptomoeda_id = cr.id
 	join corretoras co on cr.corretora_id = co.id
     group by co.nome_exchange;
 
@@ -97,4 +97,15 @@ INSERT INTO transacoes_cripto(quantidade, valor_pago) VALUES
 	join criptomoedas cr on t.criptomoeda_id = cr.id
 	where t.valor_pago . 500.00
 	order by t.valor_pago desc;
-	
+
+CREATE VIEW vw_painel_carteiras AS
+SELECT
+    c.endereco_wallet,
+    c.rede_blockchain,
+    c.status,
+    c.saldo_usd,
+    i.nome AS investidor,
+    i.cpf
+FROM carteiras c
+JOIN investidores i
+    ON c.investidores_id = i.id;
