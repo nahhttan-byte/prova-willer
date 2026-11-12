@@ -98,14 +98,14 @@ INSERT INTO transacoes_cripto(quantidade, valor_pago) VALUES
 	where t.valor_pago . 500.00
 	order by t.valor_pago desc;
 
-CREATE VIEW vw_painel_carteiras AS
-SELECT
+creat view vw_painel_carteiras as
+select
     c.endereco_wallet,
     c.rede_blockchain,
     c.status,
     c.saldo_usd,
-    i.nome AS investidor,
+    i.nome as investidor,
     i.cpf
-FROM carteiras c
-JOIN investidores i
-    ON c.investidores_id = i.id;
+from carteiras c
+join investidores i
+    on c.investidores_id = i.id;
